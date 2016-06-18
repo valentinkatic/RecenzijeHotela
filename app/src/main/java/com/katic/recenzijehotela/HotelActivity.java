@@ -11,30 +11,24 @@ import android.widget.TextView;
 
 public class HotelActivity extends AppCompatActivity{
 
-    private String naziv;
-    private int rate;
-    private String ulica;
-    private String grad;
-    private String opis;
-    private int pic, pic2, pic3, pic4;
-
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
         setContentView(R.layout.activity_hotel);
 
-        naziv = getIntent().getStringExtra(MainActivity.NAZIV);
-        rate = getIntent().getIntExtra(MainActivity.RATE,0);
-        ulica = getIntent().getStringExtra(MainActivity.ULICA);
-        grad = getIntent().getStringExtra(MainActivity.GRAD);
-        opis = getIntent().getStringExtra(MainActivity.OPIS);
-        pic = getIntent().getIntExtra(MainActivity.PIC,0);
-        pic2 = getIntent().getIntExtra(MainActivity.PIC2,0);
-        pic3 = getIntent().getIntExtra(MainActivity.PIC3,0);
-        pic4 = getIntent().getIntExtra(MainActivity.PIC4,0);
+        //Dodjeljivanje varijabli primljenim vrijednostima iz prethodnog Activity-a
+        String naziv = getIntent().getStringExtra(MainActivity.NAZIV);
+        int rate = getIntent().getIntExtra(MainActivity.RATE,0);
+        String ulica = getIntent().getStringExtra(MainActivity.ULICA);
+        String grad = getIntent().getStringExtra(MainActivity.GRAD);
+        String opis = getIntent().getStringExtra(MainActivity.OPIS);
+        int pic = getIntent().getIntExtra(MainActivity.PIC,0);
+        int pic2 = getIntent().getIntExtra(MainActivity.PIC2,0);
+        int pic3 = getIntent().getIntExtra(MainActivity.PIC3,0);
+        int pic4 = getIntent().getIntExtra(MainActivity.PIC4,0);
 
+        //Dodjeljivanje varijabli objektima s layout-a
         TextView textNaziv = (TextView) findViewById(R.id.naziv);
         TextView textUlica = (TextView) findViewById(R.id.ulica);
         TextView textGrad = (TextView) findViewById(R.id.grad);
@@ -49,6 +43,7 @@ public class HotelActivity extends AppCompatActivity{
         actionBar.setTitle(naziv);
         actionBar.setDisplayHomeAsUpEnabled(true);
 
+        //Postavljanje vrijednosti objektima
         textNaziv.setText(naziv);
         ratingBar.setRating(rate);
         textUlica.setText(ulica);

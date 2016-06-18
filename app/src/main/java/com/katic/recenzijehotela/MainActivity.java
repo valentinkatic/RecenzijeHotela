@@ -37,6 +37,7 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
+    //Unošenje podataka za hotele
     private void populateHotelList() {
         listaHotela.add(new Hotel("Hotel Osijek", 4, "Šamačka 4", "31000 Osijek", "U centru Osijeka, u srcu pješačke zone grada smješten je hotel Osijek, na najdužoj i najljepšoj riječnoj šetnici u Hrvatskoj.\n" +
                 "Svojom ponudom hotel će unijeti dašak luksuza u svako Vaše putovanje, bilo da ste izbirljiv poslovni gost ili Vas je do Osijeka dovelo istraživanje turističke ponude ovih krajeva.", R.drawable.osijek, R.drawable.osijek2, R.drawable.osijek3, R.drawable.osijek4));
@@ -47,9 +48,11 @@ public class MainActivity extends AppCompatActivity {
         listaHotela.add(new Hotel("Hotel Drava", 3, "I.Gundulića 25a", "31000 Osijek", "Hotel Drava smješten je na jedinstvenom položaju u središtu grada. Samo nekoliko minuta od autobusnog i željezničkog kolodvora, u neposrednoj blizini glavnih turističkih atrakcija i gradskih znamenitosti.", R.drawable.drava, R.drawable.drava2, R.drawable.drava3, R.drawable.drava4));
         listaHotela.add(new Hotel("Hotel Silver", 3, "Martina Divalta 84", "31000 Osijek", "Hotel Silver je obiteljski, luksuzno uređeni hotel smješten u neposrednoj blizini Gradskog vrta, sportske dvorane, zatvorenih bazena, shoping centra, te samo 2.000 metara udaljen od središta grada.", R.drawable.silver, R.drawable.silver2, R.drawable.silver3, R.drawable.silver4));
         listaHotela.add(new Hotel("Hotel Central", 2, "Trg A. Starčevića 6", "31000 Osijek", "Najstariji osječki hotel, svečano je otvoren 30. studenog davne 1889. godine kada je nosio ime \"Zum goldenem Kreutz\" (kod Zlatnoga križa). Hotel Central simbol je tradicije ovog lijepog grada, i danas, 120 godina nakon što je otvorio svoja vrata, zauzima posebno mjesto u kulturnom i poslovnom životu grada.", R.drawable.central, R.drawable.central2, R.drawable.central3, R.drawable.central4));
+        listaHotela.add(new Hotel("Hotel Lug", 4, "Šandora Petefija 64", "31328 Lug", "Naš luksuzni hotel smješten je u neposrednoj blizini parka prirode i zoološkog rezervata Kopački rit, te na samo par minuta vožnje od poznatog lovišta i dvorca Tikveš. Unatoč prekrasnoj mirnoj prirodi na samo smo 15 minuta vožnje od gradske vreve i centra grada Osijeka. Svojim gostima se trudimo ponuditi jedinstvenu kombinaciju ladanjskog mira i nedirnute prirode u posebno uređenim sobama sa masivnim namještajem koje su u skladu sa najvišim standardima danas potpuno opremljene minibarovima, velikim LED televizorima, direktim telefonskim linijama i WiFi internetom.", R.drawable.lug, R.drawable.lug2, R.drawable.lug3, R.drawable.lug4));
+        listaHotela.add(new Hotel("Hotel Villa Valpovo", 4, "Bana J.Jelačića 1", "31550 Valpovo", "Villa Valpovo je smještena na ulazu u grad Valpovo, na glavnoj cesti, kraj  Karašice,  rijeke opjevane u mnogim poznatim slavonskim pjesmama. Do središta grada Valpova ima 10ak minuta šetnje. Kada ste u centru Valpova, osim što možete upoznati naš ponosni grad, njegove kulturno – povijesne znamenitosti i građevine moderne arhitekture, na dohvat ruke su Vam naše banke, pošta, FINA, Gradsko poglavarstvo, Dom zdravlja,  Župna crkva BZBDM, tržnica, Gradska knjižnica, policijska postaja, željeznički i autobusni kolodvor, te tenisko i nogometno igralište i naš poznati valpovački park sa svojim šetnicama.", R.drawable.villavalpovo, R.drawable.villavalpovo2, R.drawable.villavalpovo3, R.drawable.villavalpovo4));
     }
 
-
+    //Prikaz ListView objekta s unešenom listom hotela
     private void populateListView() {
         ArrayAdapter<Hotel> adapter = new MyListAdapter();
         ListView list = (ListView) findViewById(R.id.hoteliListView);
@@ -74,7 +77,7 @@ public class MainActivity extends AppCompatActivity {
             //Hotel s kojim trenutno radimo
             Hotel currentHotel = listaHotela.get(position);
 
-            //Popuni view
+            //Popuni View
             ImageView imageView = (ImageView) itemView.findViewById(R.id.slikaHotela);
             imageView.setImageResource(currentHotel.getPic());
 
@@ -87,12 +90,11 @@ public class MainActivity extends AppCompatActivity {
             TextView ulicaText = (TextView) itemView.findViewById(R.id.ulica);
             ulicaText.setText(currentHotel.getUlica());
 
-            //return super.getView(position, convertView, parent);
-
             return itemView;
         }
     }
 
+    //Prenošenje podataka odabranog hotela na pozvani Activity
     private AdapterView.OnItemClickListener onListClick = new AdapterView.OnItemClickListener(){
         public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
             Intent intent = new Intent(MainActivity.this, HotelActivity.class);
